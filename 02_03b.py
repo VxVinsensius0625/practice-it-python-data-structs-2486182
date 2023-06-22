@@ -12,12 +12,18 @@ class Todolist:
     def adding(self, tasks_list, priority=False):
         if priority == True:
             self.tasks.extendleft(tasks_list)
+            print(f"Added tasks are {', '.join(tasks_list)}")
         else:
             self.tasks.extend(tasks_list)
+            print(f"Added tasks are {', '.join(tasks_list)}")
 
     def printing(self):
-        print(f"The tasks are {', '.join(self.tasks)}")
-
+        print(f"The current tasks are {', '.join(self.tasks)}")
+    
+    def do_task(self):
+        task_hprio = self.tasks.popleft()
+        print(f"Highest priotity task is {task_hprio}.")
+    
     def completing(self, task):
         for tasks in task:
             self.tasks.remove(tasks)
@@ -30,7 +36,8 @@ def main():
     tasks_list.adding(["Themo FE"])
     tasks_list.adding(["Hackerrank"], priority=True)
     tasks_list.printing()
-    tasks_list.completing(["Bunny Stream", "Hackerrank"])
+    tasks_list.do_task()
+    # tasks_list.completing(["Bunny Stream"])
     tasks_list.printing()
     return
 
